@@ -118,43 +118,73 @@ function fireConfetti() {
     c.addEventListener('animationend', () => c.remove());
   }
 }
-// ====== MUSIC ======
-const audio = document.getElementById("musica");
 
-audio.volume = 1;
+// ====== MÚSICA DE FONDO ======
+// Coloca tu archivo de música en la misma carpeta que index.html
+// Formatos soportados: .mp3 | .ogg | .wav
+const audio = new Audio('musica.mp3');
+audio.loop   = true;
+audio.volume = 0.4;
 
-// intentar autoplay
-window.addEventListener("load", async () => {
-  try {
-    await audio.play();
-    console.log("Autoplay funcionando");
-  } catch (e) {
-    console.log("Autoplay bloqueado");
+// Botón flotante de música (visible en móvil cuando autoplay falla)
+const musicBtn = document.createElement('button');
+musicBtn.id = 'music-btn';
+musicBtn.innerHTML = '🔇';
+musicBtn.title = 'Activar música';
+musicBtn.style.cssText = `
+  position: fixed; bottom: 1.2rem; right: 1.2rem;
+  z-index: 999;
+  background: rgba(194,24,91,0.85);
+  border: none; border-radius: 50%;
+  width: 46px; height: 46px;
+  font-size: 1.3rem; cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+  backdrop-filter: blur(4px);
+`;
+document.body.appendChild(musicBtn);
+
+let playing = false;
+
+function startMusic() {
+  audio.play().then(() => {
+    playing = true;
+    musicBtn.innerHTML = '🔊';
+    musicBtn.title = 'Silenciar música';
+    musicBtn.style.background = 'rgba(194,24,91,0.7)';
+  }).catch(() => {});
+}
+
+musicBtn.addEventListener('click', () => {
+  if (playing) {
+    audio.pause();
+    playing = false;
+    musicBtn.innerHTML = '🔇';
+    musicBtn.title = 'Activar música';
+    musicBtn.style.background = 'rgba(194,24,91,0.85)';
+  } else {
+    startMusic();
   }
 });
 
-// función universal
-async function iniciarMusica() {
-  try {
-    if (audio.paused) {
-      await audio.play();
-      console.log("Música iniciada");
-    }
-  } catch (err) {
-    console.log(err);
-  }
-}
+// Intentar autoplay al cargar
+window.addEventListener('load', () => {
+  audio.play().then(() => {
+    playing = true;
+    musicBtn.innerHTML = '🔊';
+    musicBtn.style.background = 'rgba(194,24,91,0.7)';
+  }).catch(() => {
+    // Autoplay bloqueado — el botón queda visible para que el usuario lo active
+    musicBtn.style.animation = 'pulse 2s ease-in-out infinite';
+  });
+});
 
-// móvil
-document.addEventListener("touchstart", iniciarMusica, { passive: true });
-
-// deslizar pantalla
-document.addEventListener("touchmove", iniciarMusica, { passive: true });
-
-// scroll
-window.addEventListener("scroll", iniciarMusica, { passive: true });
-
-// pc
-document.addEventListener("click", iniciarMusica);
-
-
+// También intentar en primer toque (iOS requiere esto)
+const iosStart = () => {
+  if (!playing) startMusic();
+  document.removeEventListener('touchstart', iosStart);
+  document.removeEventListener('click',      iosStart);
+};
+document.addEventListener('touchstart', iosStart, { once: true });
+document.addEventListener('click',      iosStart, { once: true });
