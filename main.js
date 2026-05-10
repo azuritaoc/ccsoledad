@@ -120,71 +120,84 @@ function fireConfetti() {
 }
 
 // ====== MÚSICA DE FONDO ======
-// Coloca tu archivo de música en la misma carpeta que index.html
-// Formatos soportados: .mp3 | .ogg | .wav
 const audio = new Audio('musica.mp3');
 audio.loop   = true;
 audio.volume = 0.4;
 
-// Botón flotante de música (visible en móvil cuando autoplay falla)
+// Botón flotante mute/unmute
 const musicBtn = document.createElement('button');
 musicBtn.id = 'music-btn';
-musicBtn.innerHTML = '🔇';
-musicBtn.title = 'Activar música';
+musicBtn.innerHTML = '🔊';
+musicBtn.title = 'Silenciar música';
 musicBtn.style.cssText = `
   position: fixed; bottom: 1.2rem; right: 1.2rem;
-  z-index: 999;
+  z-index: 999; display: none;
   background: rgba(194,24,91,0.85);
   border: none; border-radius: 50%;
   width: 46px; height: 46px;
   font-size: 1.3rem; cursor: pointer;
   box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  display: flex; align-items: center; justify-content: center;
-  transition: transform 0.2s, background 0.2s;
-  backdrop-filter: blur(4px);
+  align-items: center; justify-content: center;
+  transition: transform 0.2s;
 `;
 document.body.appendChild(musicBtn);
 
 let playing = false;
-
-function startMusic() {
-  audio.play().then(() => {
-    playing = true;
-    musicBtn.innerHTML = '🔊';
-    musicBtn.title = 'Silenciar música';
-    musicBtn.style.background = 'rgba(194,24,91,0.7)';
-  }).catch(() => {});
-}
-
-musicBtn.addEventListener('click', () => {
+musicBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
   if (playing) {
-    audio.pause();
-    playing = false;
+    audio.pause(); playing = false;
     musicBtn.innerHTML = '🔇';
-    musicBtn.title = 'Activar música';
-    musicBtn.style.background = 'rgba(194,24,91,0.85)';
   } else {
-    startMusic();
+    audio.play(); playing = true;
+    musicBtn.innerHTML = '🔊';
   }
 });
 
-// Intentar autoplay al cargar
-window.addEventListener('load', () => {
-  audio.play().then(() => {
-    playing = true;
-    musicBtn.innerHTML = '🔊';
-    musicBtn.style.background = 'rgba(194,24,91,0.7)';
-  }).catch(() => {
-    // Autoplay bloqueado — el botón queda visible para que el usuario lo active
-    musicBtn.style.animation = 'pulse 2s ease-in-out infinite';
-  });
-});
+// ====== OVERLAY DE BIENVENIDA (garantiza audio en iOS) ======
+const overlay = document.createElement('div');
+overlay.id = 'welcome-overlay';
+overlay.style.cssText = `
+  position: fixed; inset: 0; z-index: 10000;
+  background: linear-gradient(160deg, #1a0010 0%, #2d0a1a 60%, #1a0010 100%);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 2rem;
+  cursor: pointer;
+`;
+overlay.innerHTML = `
+  <img src="logo.png" alt="Logo" style="max-width:160px;margin-bottom:1.5rem;filter:drop-shadow(0 0 20px rgba(212,160,23,0.6));" onerror="this.style.display='none'">
+  <div style="font-family:'Dancing Script',cursive;font-size:clamp(1.8rem,6vw,2.8rem);color:#fff;text-shadow:0 2px 20px rgba(194,24,91,0.8);margin-bottom:0.5rem;">
+    ¡Feliz Día de las Madres!
+  </div>
+  <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:rgba(255,255,255,0.6);margin-bottom:2.5rem;font-style:italic;">
+    Ronda Campesina La Soledad
+  </div>
+  <button id="enter-btn" style="
+    background: linear-gradient(135deg, #880e4f, #c2185b);
+    color: white; border: none; cursor: pointer;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    box-shadow: 0 8px 30px rgba(194,24,91,0.5);
+    animation: pulse 2s ease-in-out infinite;
+  ">🌹 Toca para entrar</button>
+  <div style="margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.35);font-family:'Cormorant Garamond',serif;">
+    🎵 Con música incluida
+  </div>
+`;
+document.body.appendChild(overlay);
 
-// También intentar en primer toque (iOS requiere esto)
-const iosStart = () => {
-  if (!playing) startMusic();
-  document.removeEventListener('touchstart', iosStart);
-  document.removeEventListener('click',      iosStart);
-};
-document.addEventListener('touchstart', iosStart, { once: true });
-document.addEventListener('click',      iosStart, { once: true });
+document.getElementById('enter-btn').addEventListener('click', (e) => {
+  e.stopPropagation();
+  // Iniciar audio DENTRO del evento click — única forma garantizada en iOS
+  audio.play().then(() => { playing = true; musicBtn.innerHTML = '🔊'; })
+              .catch(() => { musicBtn.innerHTML = '🔇'; });
+  // Ocultar overlay con fade
+  overlay.style.transition = 'opacity 0.6s ease';
+  overlay.style.opacity = '0';
+  setTimeout(() => { overlay.remove(); }, 650);
+  // Mostrar botón mute
+  musicBtn.style.display = 'flex';
+});
