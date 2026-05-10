@@ -120,7 +120,7 @@ function fireConfetti() {
 }
 
 // ====== MÚSICA DE FONDO ======
-const audio = new Audio('musica.mp3');
+const audio = new Audio('madre.mp3');
 audio.loop   = true;
 audio.volume = 0.4;
 
@@ -184,8 +184,7 @@ overlay.innerHTML = `
     animation: pulse 2s ease-in-out infinite;
   ">🌹 Toca para entrar</button>
   <div style="margin-top:1rem;font-size:0.8rem;color:rgba(255,255,255,0.35);font-family:'Cormorant Garamond',serif;">
-    🎵 Con música incluida
-  </div>
+      </div>
 `;
 document.body.appendChild(overlay);
 
