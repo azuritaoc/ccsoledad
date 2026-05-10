@@ -118,30 +118,43 @@ function fireConfetti() {
     c.addEventListener('animationend', () => c.remove());
   }
 }
+// ====== MUSIC ======
+const audio = document.getElementById("musica");
 
-   const audio = document.getElementById("musica");
+audio.volume = 1;
 
-  function iniciarMusica() {
-    audio.play()
-      .then(() => {
-        console.log("Música reproduciéndose");
-      })
-      .catch(err => {
-        console.log("Error:", err);
-      });
-
-    // eliminar eventos después de iniciar
-    document.removeEventListener("touchstart", iniciarMusica);
-    document.removeEventListener("touchmove", iniciarMusica);
-    document.removeEventListener("click", iniciarMusica);
+// intentar autoplay
+window.addEventListener("load", async () => {
+  try {
+    await audio.play();
+    console.log("Autoplay funcionando");
+  } catch (e) {
+    console.log("Autoplay bloqueado");
   }
+});
 
-  // móvil
-  document.addEventListener("touchstart", iniciarMusica);
+// función universal
+async function iniciarMusica() {
+  try {
+    if (audio.paused) {
+      await audio.play();
+      console.log("Música iniciada");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+}
 
-  // deslizar dedo
-  document.addEventListener("touchmove", iniciarMusica);
+// móvil
+document.addEventListener("touchstart", iniciarMusica, { passive: true });
 
-  // pc
-  document.addEventListener("click", iniciarMusica);
+// deslizar pantalla
+document.addEventListener("touchmove", iniciarMusica, { passive: true });
+
+// scroll
+window.addEventListener("scroll", iniciarMusica, { passive: true });
+
+// pc
+document.addEventListener("click", iniciarMusica);
+
 
