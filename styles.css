@@ -492,3 +492,78 @@ footer .footer-copy {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--cream); }
 ::-webkit-scrollbar-thumb { background: var(--rose-light); border-radius: 10px; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+
+  #hero {
+    min-height: auto;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .hero-content {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    line-height: 1.15;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    width: 100%;
+  }
+
+  .community-logo {
+    max-width: 140px;
+  }
+
+  .hero-icon svg {
+    width: 110px;
+    height: auto;
+  }
+
+  .hero-btn {
+    width: 100%;
+    max-width: 320px;
+    font-size: 1.15rem;
+    padding: 1rem;
+  }
+
+  .tribute-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .tribute-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .letter-card {
+    padding: 1.5rem;
+    border-radius: 18px;
+  }
+
+  .letter-body {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .footer-flowers {
+    letter-spacing: 0.2rem;
+    font-size: 1.1rem;
+  }
+
+  .hero-rose {
+    font-size: 2rem;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
