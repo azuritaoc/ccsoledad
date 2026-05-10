@@ -125,7 +125,7 @@ function fireConfetti() {
 // Formatos soportados: .mp3 | .ogg | .wav
 const audio = new Audio('madre.mp3');
 audio.loop   = true;   // repetir en bucle
-audio.volume = 0.4;    // volumen: 0.0 (mudo) → 1.0 (máximo)
+audio.volume = 0.6;    // volumen: 0.0 (mudo) → 1.0 (máximo)
 
 // Intentar reproducir apenas carga la página
 audio.play().catch(() => {
