@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Día de la Madre - Ronda Campesina La Soledad</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-flower">🌸</div>
+  <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+  <div class="loader-pct" id="loaderPct">0%</div>
+</div>
+
+<!-- PARTICLES -->
+<div id="particles"></div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <span class="hero-rose">🌹</span>
+  <span class="hero-rose">🌷</span>
+  <span class="hero-rose">🌸</span>
+  <span class="hero-rose">💐</span>
+  <div class="hero-content">
+    <!-- ===== LOGO DE LA COMUNIDAD =====
+         Reemplaza 'logo.png' con el nombre de tu archivo de logo.
+         Colócalo en la misma carpeta que index.html.
+         Puedes cambiar el tamaño editando max-width en styles.css (.community-logo)
+    ===== -->
+    <img src="logo.png" alt="Logo Ronda Campesina La Soledad" class="community-logo"
+         onerror="this.style.display='none'">
+
+    <div class="community-badge"> RONDA CAMPESINA LA SOLEDAD </div>
+    <span class="hero-icon">
+      <svg width="150" height="170" viewBox="0 0 150 170" xmlns="http://www.w3.org/2000/svg" style="filter:drop-shadow(0 14px 36px rgba(160,10,30,0.55)) drop-shadow(0 4px 14px rgba(0,0,0,0.3))">
+        <defs>
+          <radialGradient id="rg1" cx="42%" cy="38%" r="58%">
+            <stop offset="0%" stop-color="#ff4878"/>
+            <stop offset="38%" stop-color="#cc1030"/>
+            <stop offset="100%" stop-color="#700010"/>
+          </radialGradient>
+          <radialGradient id="rg2" cx="46%" cy="32%" r="56%">
+            <stop offset="0%" stop-color="#ff6090"/>
+            <stop offset="42%" stop-color="#c80e28"/>
+            <stop offset="100%" stop-color="#780010"/>
+          </radialGradient>
+          <radialGradient id="rg3" cx="38%" cy="28%" r="62%">
+            <stop offset="0%" stop-color="#ff7898"/>
+            <stop offset="40%" stop-color="#e01848"/>
+            <stop offset="100%" stop-color="#880018"/>
+          </radialGradient>
+          <radialGradient id="rg4" cx="36%" cy="30%" r="64%">
+            <stop offset="0%" stop-color="#ff90a8"/>
+            <stop offset="36%" stop-color="#f02858"/>
+            <stop offset="100%" stop-color="#980020"/>
+          </radialGradient>
+          <radialGradient id="rg5" cx="35%" cy="28%" r="66%">
+            <stop offset="0%" stop-color="#ffaabb"/>
+            <stop offset="33%" stop-color="#f84068"/>
+            <stop offset="100%" stop-color="#a80028"/>
+          </radialGradient>
+          <radialGradient id="rgStem" cx="35%" cy="15%" r="75%">
+            <stop offset="0%" stop-color="#68c278"/>
+            <stop offset="100%" stop-color="#246830"/>
+          </radialGradient>
+          <radialGradient id="rgLeafL" cx="30%" cy="25%" r="70%">
+            <stop offset="0%" stop-color="#72c880"/>
+            <stop offset="100%" stop-color="#2a7030"/>
+          </radialGradient>
+          <radialGradient id="rgLeafR" cx="65%" cy="25%" r="70%">
+            <stop offset="0%" stop-color="#60b870"/>
+            <stop offset="100%" stop-color="#246028"/>
+          </radialGradient>
+        </defs>
+        <!-- TALLO -->
+        <path d="M75 168 Q72 148 70 128 Q68 110 70 95" stroke="url(#rgStem)" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <!-- Espinas -->
+        <path d="M70 125 Q58 118 56 108 Q64 114 70 125Z" fill="#2e7035"/>
+        <path d="M71 138 Q82 130 84 120 Q76 126 71 138Z" fill="#246028"/>
+        <!-- HOJA IZQUIERDA -->
+        <path d="M70 128 Q34 112 26 82 Q24 62 40 56 Q56 52 66 72 Q72 90 70 128Z" fill="url(#rgLeafL)"/>
+        <path d="M70 128 Q50 104 44 80 Q40 64 44 58" stroke="#1a5020" stroke-width="1.4" fill="none" opacity="0.6"/>
+        <path d="M58 106 Q42 96 34 82" stroke="#1a5020" stroke-width="0.8" fill="none" opacity="0.4"/>
+        <path d="M64 116 Q48 108 38 94" stroke="#1a5020" stroke-width="0.7" fill="none" opacity="0.35"/>
+        <path d="M52 94 Q40 86 36 74" stroke="#1a5020" stroke-width="0.7" fill="none" opacity="0.35"/>
+        <!-- HOJA DERECHA -->
+        <path d="M72 108 Q100 94 106 66 Q108 48 94 44 Q80 42 74 60 Q70 78 72 108Z" fill="url(#rgLeafR)"/>
+        <path d="M72 108 Q94 84 96 64 Q96 50 90 46" stroke="#1a5020" stroke-width="1.2" fill="none" opacity="0.6"/>
+        <path d="M80 92 Q96 80 100 66" stroke="#1a5020" stroke-width="0.7" fill="none" opacity="0.4"/>
+        <path d="M76 100 Q90 90 96 76" stroke="#1a5020" stroke-width="0.65" fill="none" opacity="0.35"/>
+        <!-- SÉPALOS -->
+        <path d="M52 96 Q42 82 48 68 Q56 80 64 90 Q58 95 52 96Z" fill="#3a8845"/>
+        <path d="M96 90 Q104 76 96 64 Q90 76 82 88 Q88 93 96 90Z" fill="#2e7835"/>
+        <path d="M60 94 Q56 78 62 66 Q68 80 70 94Z" fill="#48a050"/>
+        <path d="M82 94 Q86 78 80 66 Q74 80 72 94Z" fill="#3a9040"/>
+        <path d="M70 92 Q64 76 70 62 Q76 76 76 92Z" fill="#52b058"/>
+        <!-- PÉTALOS CAPA 1 -->
+        <path d="M71 90 Q28 84 20 54 Q16 30 36 22 Q54 16 64 42 Q70 62 71 90Z" fill="url(#rg1)"/>
+        <path d="M36 22 Q46 40 58 58 Q64 72 71 90" stroke="#5a0010" stroke-width="0.8" fill="none" opacity="0.3"/>
+        <path d="M73 90 Q114 82 120 52 Q124 28 104 20 Q86 14 76 40 Q72 62 73 90Z" fill="url(#rg1)"/>
+        <path d="M104 20 Q94 38 82 56 Q76 72 73 90" stroke="#5a0010" stroke-width="0.8" fill="none" opacity="0.3"/>
+        <path d="M70 86 Q24 72 18 42 Q14 18 36 12 Q56 8 66 34 Q70 56 70 86Z" fill="url(#rg2)"/>
+        <path d="M36 12 Q48 30 60 50 Q66 66 70 86" stroke="#500010" stroke-width="0.7" fill="none" opacity="0.28"/>
+        <path d="M74 86 Q118 70 124 40 Q128 16 106 10 Q86 6 78 32 Q74 56 74 86Z" fill="url(#rg2)"/>
+        <path d="M106 10 Q94 28 82 48 Q76 66 74 86" stroke="#500010" stroke-width="0.7" fill="none" opacity="0.28"/>
+        <path d="M72 80 Q38 58 36 28 Q36 6 56 2 Q74 -2 82 22 Q86 46 72 80Z" fill="url(#rg2)"/>
+        <path d="M56 2 Q60 22 66 44 Q70 62 72 80" stroke="#500010" stroke-width="0.7" fill="none" opacity="0.28"/>
+        <!-- PÉTALOS CAPA 2 -->
+        <path d="M72 76 Q38 62 36 36 Q36 16 54 12 Q70 10 72 34 Q73 54 72 76Z" fill="url(#rg3)"/>
+        <path d="M72 76 Q104 60 104 34 Q102 14 84 10 Q70 10 74 34 Q74 54 72 76Z" fill="url(#rg3)"/>
+        <path d="M72 72 Q44 56 44 32 Q46 14 60 12 Q72 12 74 32 Q74 52 72 72Z" fill="url(#rg4)"/>
+        <path d="M72 72 Q98 56 96 32 Q94 14 80 12 Q70 12 72 32 Q72 52 72 72Z" fill="url(#rg4)"/>
+        <path d="M72 68 Q48 52 50 30 Q52 14 64 12 Q74 12 74 30 Q74 50 72 68Z" fill="url(#rg4)"/>
+        <!-- PÉTALOS CAPA 3 -->
+        <path d="M72 62 Q52 48 54 28 Q56 16 66 14 Q74 14 74 30 Q73 46 72 62Z" fill="url(#rg5)"/>
+        <path d="M72 62 Q90 48 88 28 Q86 16 76 14 Q68 14 72 30 Q72 46 72 62Z" fill="url(#rg5)"/>
+        <path d="M72 56 Q56 44 58 26 Q60 16 68 15 Q76 16 74 28 Q73 42 72 56Z" fill="#f03060"/>
+        <path d="M72 56 Q86 44 84 26 Q82 16 74 15 Q66 16 72 28 Q72 42 72 56Z" fill="#f03060"/>
+        <path d="M72 50 Q58 40 60 24 Q62 16 68 16 Q76 16 74 26 Q73 38 72 50Z" fill="#f84070"/>
+        <path d="M72 50 Q84 40 82 24 Q80 16 74 16 Q66 16 72 26 Q72 38 72 50Z" fill="#f84070"/>
+        <!-- NÚCLEO -->
+        <path d="M72 44 Q60 36 62 22 Q64 14 70 14 Q76 14 76 24 Q75 36 72 44Z" fill="#ff5878"/>
+        <path d="M72 44 Q82 36 80 22 Q78 14 72 14 Q68 14 72 24 Q73 36 72 44Z" fill="#ff5878"/>
+        <ellipse cx="72" cy="26" rx="8" ry="11" fill="#ff6888"/>
+        <ellipse cx="72" cy="24" rx="5.5" ry="7.5" fill="#ff88a0"/>
+        <ellipse cx="71" cy="22" rx="3.5" ry="5" fill="#ffaabb"/>
+        <ellipse cx="71" cy="20" rx="2" ry="3" fill="#ffc8d4"/>
+        <ellipse cx="71" cy="19" rx="1.1" ry="1.8" fill="#ffe0e8"/>
+        <!-- GOTAS DE ROCÍO -->
+        <ellipse cx="36" cy="54" rx="3.2" ry="4.4" fill="rgba(195,228,255,0.74)" stroke="rgba(140,195,255,0.5)" stroke-width="0.7"/>
+        <ellipse cx="35.0" cy="52.0" rx="1.2" ry="1.7" fill="rgba(255,255,255,0.88)"/>
+        <ellipse cx="108" cy="48" rx="2.8" ry="3.8" fill="rgba(195,228,255,0.70)" stroke="rgba(140,195,255,0.48)" stroke-width="0.6"/>
+        <ellipse cx="107.1" cy="46.2" rx="1.0" ry="1.4" fill="rgba(255,255,255,0.85)"/>
+        <ellipse cx="46" cy="24" rx="2.2" ry="3.0" fill="rgba(195,228,255,0.66)" stroke="rgba(140,195,255,0.44)" stroke-width="0.5"/>
+        <ellipse cx="45.3" cy="22.6" rx="0.8" ry="1.1" fill="rgba(255,255,255,0.82)"/>
+        <ellipse cx="60" cy="74" rx="2.0" ry="2.7" fill="rgba(195,228,255,0.63)" stroke="rgba(140,195,255,0.42)" stroke-width="0.5"/>
+        <ellipse cx="59.3" cy="72.8" rx="0.75" ry="1.0" fill="rgba(255,255,255,0.80)"/>
+        <ellipse cx="86" cy="70" rx="1.8" ry="2.4" fill="rgba(195,228,255,0.60)" stroke="rgba(140,195,255,0.40)" stroke-width="0.5"/>
+        <ellipse cx="85.4" cy="68.9" rx="0.65" ry="0.9" fill="rgba(255,255,255,0.78)"/>
+        <ellipse cx="24" cy="40" rx="2.0" ry="2.8" fill="rgba(195,228,255,0.64)" stroke="rgba(140,195,255,0.42)" stroke-width="0.5"/>
+        <ellipse cx="23.3" cy="38.7" rx="0.75" ry="1.05" fill="rgba(255,255,255,0.80)"/>
+        <ellipse cx="118" cy="38" rx="1.7" ry="2.3" fill="rgba(195,228,255,0.60)" stroke="rgba(140,195,255,0.38)" stroke-width="0.45"/>
+        <ellipse cx="117.4" cy="36.9" rx="0.62" ry="0.86" fill="rgba(255,255,255,0.76)"/>
+        <ellipse cx="54" cy="14" rx="1.6" ry="2.1" fill="rgba(195,228,255,0.58)" stroke="rgba(140,195,255,0.36)" stroke-width="0.45"/>
+        <ellipse cx="53.5" cy="13.0" rx="0.58" ry="0.78" fill="rgba(255,255,255,0.74)"/>
+        <ellipse cx="90" cy="20" rx="1.5" ry="2.0" fill="rgba(195,228,255,0.56)" stroke="rgba(140,195,255,0.35)" stroke-width="0.4"/>
+        <ellipse cx="89.5" cy="19.0" rx="0.55" ry="0.74" fill="rgba(255,255,255,0.72)"/>
+        <ellipse cx="72" cy="118" rx="1.6" ry="2.2" fill="rgba(180,218,255,0.55)" stroke="rgba(120,180,240,0.35)" stroke-width="0.4"/>
+        <ellipse cx="71.5" cy="116.9" rx="0.58" ry="0.80" fill="rgba(255,255,255,0.70)"/>
+        <!-- BRILLOS -->
+        <path d="M44 18 Q50 12 58 12 Q52 24 46 30 Q43 24 44 18Z" fill="rgba(255,255,255,0.13)"/>
+        <path d="M26 32 Q32 20 44 16 Q38 30 32 38 Q28 36 26 32Z" fill="rgba(255,255,255,0.09)"/>
+        <path d="M94 14 Q102 20 106 30 Q98 26 90 28 Q90 20 94 14Z" fill="rgba(255,255,255,0.09)"/>
+      </svg>
+    </span>
+    <h1 class="hero-title">¡Feliz Día de<br>las Madres!</h1>
+    <p class="hero-subtitle">Con amor</p>
+    <p class="hero-desc">
+      Hoy celebramos a las mujeres extraordinarias de la Comunidad La Soledad, quienes con sus manos trabajadoras, 
+      su amor infinito y su fortaleza inquebrantable hacen florecer nuestra ronda y nuestra comunidad cada día.
+    </p>
+    <button class="hero-btn" onclick="document.getElementById('envelope-section').scrollIntoView({behavior:'smooth'})">
+      💌 Abrir la carta especial
+    </button>
+  </div>
+</section>
+
+<!-- ENVELOPE -->
+<section id="envelope-section" class="reveal">
+  <p class="section-label">Un mensaje del corazón</p>
+  <h2 class="section-title">Carta para Mamá</h2>
+  <div class="envelope-wrap" onclick="openLetter()">
+    <div class="envelope" id="envelope">
+      <div class="env-body"></div>
+      <div class="env-left"></div>
+      <div class="env-right"></div>
+      <div class="env-bottom"></div>
+      <div class="env-triangle" id="envFlap"></div>
+      <div class="env-rose">🌹</div>
+    </div>
+  </div>
+  <p class="env-hint">✨ Toca la carta para abrir ✨</p>
+</section>
+
+<!-- LETTER MODAL -->
+<div id="letter-modal" onclick="closeLetter(event)">
+  <div class="letter-card">
+    <button class="letter-close" onclick="closeLetter()">✕</button>
+    <div class="letter-flowers">🌸 🌷 🌹 🌺 💐</div>
+    <h2 class="letter-heading">Querida Mamá,</h2>
+    <div class="letter-body">
+      <p>En este día tan especial, la Ronda Campesina La Soledad quiere rendir homenaje a todas las madres que, con amor, esfuerzo y valentía, son el corazón y la fuerza de nuestra comunidad.</p>
+      <p>Madre, tú eres la raíz firme que sostiene nuestra tierra y nuestra familia. Con tus manos trabajadoras no solo construyes el bienestar de tu hogar, sino también los valores, la unión y la esperanza que hacen grande a nuestro pueblo.</p>
+      <p>Gracias por cada amanecer de sacrificio, por tu entrega silenciosa, por cargar el peso del hogar con fortaleza y ternura, y por enseñarnos que el verdadero amor se demuestra día a día, con paciencia, humildad y dedicación.</p>
+      <p>Eres ejemplo de lucha, sabiduría y bondad. En tus consejos encontramos guía; en tu abrazo, refugio; y en tu sonrisa, la motivación para seguir adelante aun en los momentos más difíciles.</p>
+      <p>Hoy queremos decirte cuánto te admiramos y agradecemos todo lo que haces por tus hijos, por tu familia y por nuestra comunidad.</p>
+      <p>Que Dios bendiga siempre tu vida y te conceda salud, alegría y muchos motivos para seguir sonriendo.</p>
+    </div>
+    <div class="letter-flowers">🦋 💖 🌟</div>
+    <div class="letter-sign">Con todo nuestro cariño y respeto,<br>Ronda Campesina La Soledad</div>
+  </div>
+</div>
+
+<!-- TRIBUTE CARDS -->
+<section id="tribute" class="reveal">
+  <p class="section-label">Nuestra gratitud</p>
+  <h2 class="section-title">Lo que nos das cada día</h2>
+  <div class="tribute-grid">
+    <div class="tribute-card">
+      <span class="tribute-icon">💪</span>
+      <h3>Tu Fortaleza</h3>
+      <p>Enfrentas cada día con valentía, enseñándonos que los obstáculos son escalones hacia algo mejor.</p>
+    </div>
+    <div class="tribute-card">
+      <span class="tribute-icon">🌱</span>
+      <h3>Tu Sabiduría</h3>
+      <p>Con paciencia, amor y experiencia, nos enseñas cada día el valor del esfuerzo, la humildad y la unión, dejando huellas que inspiran a toda nuestra comunidad.</p>
+    </div>
+    <div class="tribute-card">
+      <span class="tribute-icon">❤️</span>
+      <h3>Tu Amor</h3>
+      <p>Un amor incondicional que no tiene medida, que cura heridas y llena de luz los días grises.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo-wrap">
+    <img src="logoo.png" alt="Logo Ronda Campesina La Soledad" class="community-logo footer-logo"
+         onerror="this.style.display='none'">
+  </div>
+  <div class="footer-divider"></div>
+  <div class="footer-title">Ronda Campesina La Soledad</div>
+  <div class="footer-sub">Celebrando el Día de las Madres con amor y gratitud</div>
+  <div class="footer-flowers">🌸 🌹 🌷 💐 🌺</div>
+  <div class="footer-copy">Hecho con ❤️ para las mamás más hermosas</div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
