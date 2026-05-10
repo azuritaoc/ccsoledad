@@ -344,7 +344,7 @@ body {
 .letter-body p { margin-bottom: 1rem; }
 .letter-sign {
   font-family: 'Dancing Script', cursive;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--rose);
   margin-top: 1.5rem;
   text-align: right;
