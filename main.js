@@ -8,7 +8,7 @@
            onerror="this.style.display='none'">
       <div class="wov-flowers">🌸 🌹 🌷 🌺 💐</div>
       <h1 class="wov-title">¡ Feliz Día de las Madre !</h1>
-      <button id="enter-btn" class="wov-btn">🌹 Toca para entrar</button>
+      <button id="enter-btn" class="wov-btn"> Toca para entrar</button>
     </div>
   `;
   document.body.appendChild(overlay);
