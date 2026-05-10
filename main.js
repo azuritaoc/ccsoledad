@@ -132,4 +132,9 @@ function fireConfetti() {
   document.addEventListener("click", () => {
     audio.play();
   }, { once: true });
+  // Cuando se desliza / hace scroll
+  document.addEventListener("scroll", reproducirMusica, { once: true });
+
+  // Cuando mueve el dedo en pantalla
+  document.addEventListener("touchmove", reproducirMusica, { once: true });
 
