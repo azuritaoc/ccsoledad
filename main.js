@@ -119,3 +119,17 @@ function fireConfetti() {
   }
 }
 
+   const audio = document.getElementById("musica");
+
+  // intentar reproducir al cargar
+  window.addEventListener("load", () => {
+    audio.play().catch(() => {
+      console.log("Autoplay bloqueado");
+    });
+  });
+
+  // reproducir después de la primera interacción
+  document.addEventListener("click", () => {
+    audio.play();
+  }, { once: true });
+
