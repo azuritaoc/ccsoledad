@@ -119,20 +119,3 @@ function fireConfetti() {
   }
 }
 
-const audio = new Audio('madre.mp3');
-audio.loop   = true;   // repetir en bucle
-audio.volume = 0.6;    // volumen: 0.0 (mudo) → 1.0 (máximo)
-
-// Intentar reproducir apenas carga la página
-audio.play().catch(() => {
-  // Si el navegador bloquea autoplay, esperar el primer toque del usuario
-  const startOnInteraction = () => {
-    audio.play().catch(() => {});
-    document.removeEventListener('click',      startOnInteraction);
-    document.removeEventListener('touchstart', startOnInteraction);
-    document.removeEventListener('keydown',    startOnInteraction);
-  };
-  document.addEventListener('click',      startOnInteraction);
-  document.addEventListener('touchstart', startOnInteraction);
-  document.addEventListener('keydown',    startOnInteraction);
-});
