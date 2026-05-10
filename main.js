@@ -7,8 +7,8 @@
       <img src="logoo.png" class="wov-logo" alt="Logo Ronda Campesina La Soledad"
            onerror="this.style.display='none'">
       <div class="wov-flowers">🌸 🌹 🌷 🌺 💐</div>
-      <h1 class="wov-title">¡ Feliz Día de las Madre !</h1>
-      <button id="enter-btn" class="wov-btn"> Toca para entrar</button>
+      <h1 class="wov-title">¡ Feliz Día de la Madre !</h1>
+      <button id="enter-btn" class="wov-btn">🌹 Toca para entrar</button>
     </div>
   `;
   document.body.appendChild(overlay);
@@ -25,11 +25,12 @@
     #welcome-overlay.hiding { opacity: 0; pointer-events: none; }
     .wov-inner {
       display: flex; flex-direction: column;
-      align-items: center; gap: 0.7rem;
-      max-width: 420px; width: 100%;
+      align-items: center; gap: 1.2rem;
+      max-width: 480px; width: 100%;
+      padding: 1rem;
     }
     .wov-logo {
-      width: min(220px, 60vw);
+      width: min(300px, 75vw);
       filter: drop-shadow(0 0 24px rgba(212,160,23,0.7)) drop-shadow(0 4px 20px rgba(0,0,0,0.6));
       animation: wovFloat 3s ease-in-out infinite;
     }
@@ -37,27 +38,28 @@
       0%,100% { transform: translateY(0); }
       50%      { transform: translateY(-10px); }
     }
-    .wov-flowers { font-size: 1.4rem; letter-spacing: 0.5rem; opacity: 0.75; margin-top: 0.2rem; }
+    .wov-flowers { font-size: clamp(1.4rem, 5vw, 2rem); letter-spacing: 0.5rem; opacity: 0.75; margin-top: 0.2rem; }
     .wov-title {
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.5rem, 6vw, 3rem);
+      font-size: clamp(2rem, 8vw, 3.5rem);
       color: #fff;
       text-shadow: 0 2px 24px rgba(194,24,91,0.9), 0 0 40px rgba(244,143,177,0.4);
       line-height: 1.2; margin: 0; white-space: nowrap;
     }
     .wov-sub {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      color: rgba(255,255,255,0.55); font-style: italic;
+      font-size: clamp(1rem, 3.5vw, 1.3rem);
+      color: rgba(255,255,255,0.6); font-style: italic;
       letter-spacing: 0.08em; margin: 0;
     }
     .wov-btn {
-      margin-top: 0.6rem;
+      margin-top: 0.8rem;
       background: linear-gradient(135deg, #880e4f 0%, #c2185b 50%, #e91e8c 100%);
       color: white; border: none; cursor: pointer;
       font-family: 'Dancing Script', cursive;
-      font-size: clamp(1.2rem, 4vw, 1.5rem);
-      padding: 0.9rem 2.4rem; border-radius: 50px;
+      font-size: clamp(1.4rem, 5vw, 1.8rem);
+      padding: clamp(0.9rem, 3vw, 1.2rem) clamp(2rem, 7vw, 3rem);
+      border-radius: 50px;
       box-shadow: 0 8px 30px rgba(194,24,91,0.55);
       animation: wovPulse 2s ease-in-out infinite;
       transition: transform 0.15s;
@@ -67,7 +69,7 @@
       0%,100% { box-shadow: 0 8px 30px rgba(194,24,91,0.55), 0 0 0 0 rgba(194,24,91,0.4); }
       50%      { box-shadow: 0 8px 30px rgba(194,24,91,0.55), 0 0 0 14px rgba(194,24,91,0); }
     }
-    .wov-hint { font-family: 'Cormorant Garamond', serif; font-size: 0.82rem; color: rgba(255,255,255,0.3); margin: 0; }
+    .wov-hint { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.9rem, 2.5vw, 1rem); color: rgba(255,255,255,0.35); margin: 0; }
     #music-btn {
       position: fixed; bottom: 1.2rem; right: 1.2rem; z-index: 999;
       display: none; background: rgba(194,24,91,0.82);
