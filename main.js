@@ -119,10 +119,6 @@ function fireConfetti() {
   }
 }
 
-// ====== MÚSICA DE FONDO ======
-// Coloca tu archivo de música en la misma carpeta que index.html
-// Luego cambia 'musica.mp3' por el nombre exacto de tu archivo
-// Formatos soportados: .mp3 | .ogg | .wav
 const audio = new Audio('madre.mp3');
 audio.loop   = true;   // repetir en bucle
 audio.volume = 0.6;    // volumen: 0.0 (mudo) → 1.0 (máximo)
