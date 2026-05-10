@@ -121,20 +121,27 @@ function fireConfetti() {
 
    const audio = document.getElementById("musica");
 
-  // intentar reproducir al cargar
-  window.addEventListener("load", () => {
-    audio.play().catch(() => {
-      console.log("Autoplay bloqueado");
-    });
-  });
+  function iniciarMusica() {
+    audio.play()
+      .then(() => {
+        console.log("Música reproduciéndose");
+      })
+      .catch(err => {
+        console.log("Error:", err);
+      });
 
-  // reproducir después de la primera interacción
-  document.addEventListener("click", () => {
-    audio.play();
-  }, { once: true });
-  // Cuando se desliza / hace scroll
-  document.addEventListener("scroll", reproducirMusica, { once: true });
+    // eliminar eventos después de iniciar
+    document.removeEventListener("touchstart", iniciarMusica);
+    document.removeEventListener("touchmove", iniciarMusica);
+    document.removeEventListener("click", iniciarMusica);
+  }
 
-  // Cuando mueve el dedo en pantalla
-  document.addEventListener("touchmove", reproducirMusica, { once: true });
+  // móvil
+  document.addEventListener("touchstart", iniciarMusica);
+
+  // deslizar dedo
+  document.addEventListener("touchmove", iniciarMusica);
+
+  // pc
+  document.addEventListener("click", iniciarMusica);
 
