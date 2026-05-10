@@ -131,12 +131,87 @@ body {
   animation: none;
 }
 
+.community-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--rose-dark), var(--rose));
+  color: white;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.5rem 1.5rem;
+  border-radius: 50px;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(194,24,91,0.3);
+  animation: fadeSlideDown 0.8s ease 0.3s both;
+}
 
 .hero-icon {
-  animation: fadeSlideDown 0.8s ease 0.5s both;
-  filter: none;
-  display: block; margin-bottom: 0.8rem;
+  animation: fadeSlideDown 0.8s ease 0.5s both, roseFloat 4s ease-in-out 1.5s infinite;
+  display: block;
+  margin-bottom: 1rem;
+  position: relative;
+  filter:
+    drop-shadow(0 0 18px rgba(194,24,91,0.55))
+    drop-shadow(0 0 40px rgba(244,100,140,0.3))
+    drop-shadow(0 8px 20px rgba(100,0,20,0.4));
+  transform-origin: center bottom;
 }
+
+.hero-icon::after {
+  content: '';
+  position: absolute;
+  bottom: -12px; left: 50%; transform: translateX(-50%);
+  width: 60%; height: 18px;
+  background: radial-gradient(ellipse, rgba(194,24,91,0.35) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: roseShadow 4s ease-in-out 1.5s infinite;
+  pointer-events: none;
+}
+
+@keyframes roseFloat {
+  0%,100% { transform: translateY(0) rotate(-1deg) scale(1); }
+  25%      { transform: translateY(-10px) rotate(1deg) scale(1.03); }
+  50%      { transform: translateY(-16px) rotate(-0.5deg) scale(1.05); }
+  75%      { transform: translateY(-8px) rotate(1.5deg) scale(1.02); }
+}
+
+@keyframes roseShadow {
+  0%,100% { transform: translateX(-50%) scaleX(1); opacity: 0.6; }
+  50%      { transform: translateX(-50%) scaleX(0.6); opacity: 0.2; }
+}
+
+/* Anillo de luz giratorio alrededor de la rosa */
+.hero-icon-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+.hero-icon-wrap::before {
+  content: '';
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0%,
+    rgba(244,143,177,0.4) 20%,
+    rgba(212,160,23,0.3) 40%,
+    transparent 50%,
+    rgba(194,24,91,0.3) 70%,
+    rgba(244,143,177,0.4) 85%,
+    transparent 100%
+  );
+  animation: roseRing 6s linear infinite;
+  pointer-events: none;
+  z-index: -1;
+  filter: blur(6px);
+}
+@keyframes roseRing {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
 @keyframes iconFloat {
   0%,100% { transform: translateY(0) rotate(-2deg); }
   50%      { transform: translateY(-12px) rotate(2deg); }
@@ -330,7 +405,7 @@ body {
 .letter-body p { margin-bottom: 1rem; }
 .letter-sign {
   font-family: 'Dancing Script', cursive;
-  font-size: 1rem;
+  font-size: 1.3rem;
   color: var(--rose);
   margin-top: 1.5rem;
   text-align: right;
